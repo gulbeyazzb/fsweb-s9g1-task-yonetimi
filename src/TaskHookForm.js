@@ -10,9 +10,9 @@ export default function TaskHookForm({ kisiler, submitFn }) {
   const notify = () => toast("Tebrikler!");
 
   const onFormSubmit = (formData) => {
+    console.log(formData);
     submitFn({
       ...formData,
-      id: nanoid(5),
       status: "yapılacak",
     });
   };
@@ -49,7 +49,12 @@ export default function TaskHookForm({ kisiler, submitFn }) {
         <div>
           {kisiler.map((p) => (
             <label className="input-checkbox" key={p}>
-              <input type="checkbox" name="people" {...register("people")} />
+              <input
+                type="checkbox"
+                name="people"
+                value={p}
+                {...register("people")}
+              />
               {p}
             </label>
           ))}
